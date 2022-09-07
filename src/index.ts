@@ -1,14 +1,13 @@
 import { User } from "./Models/User";
+import { UserEdit } from "./Views/UserEdit";
+import { UserForm } from "./Views/UserForm";
+import { UserShow } from "./Views/UserShow";
 
-const user = new User({ name: "dinuka" });
+const user = User.buildUser({ id: 1 });
+user.fetch();
 
-user.on("change", () => {
-  console.log("changed");
-});
-user.on("change", () => {
-  console.log("changed2");
-});
-user.on("fuck", () => {});
+const userEdit = new UserEdit(document.getElementById("root"), user);
 
-console.log(user);
-user.trigger("chang");
+userEdit.render();
+
+
